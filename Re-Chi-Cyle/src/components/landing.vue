@@ -4,7 +4,7 @@
     <h2> Fast Facts about Recycling in Chicago </h2>
     <ul>
         <li>Less than 9% of Chicago's waste is recycled - the national average hovers roughly around 32% according to the EPA</li>
-        <li>The rate of recycling decreased after Mayor Emanuel's introduction of the Blue Cart Program and scrapping of the Department of the Environment</li>
+        <li>The rate of recycling decreased after Mayor Emanuel introduced the Blue Cart Program and scrapped the Department of the Environment</li>
         <li>Conflicts of interest with landfill-owning, private recycling haulers have been an ongoing issue contributing to the declining rate </li>
     </ul>
     <h2>Re.Chi.Cyle was made in an effort to:</h2>
@@ -29,10 +29,10 @@ a {
 }
 
 ul{
-    width: 70%;
+    width: 80%;
     text-align: center;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 16px;
     list-style-type: square;
     line-height: 200%;
 }

@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class='nav-bar'>
-            <img class='nav-bar-img' alt='recycling logo with Chicago blue bar and red star' src='../assets/RCClogo.png'/>
+            <router-link to='/'><img class='nav-bar-img' alt='recycling logo with Chicago blue bar and red star' src='../assets/RCClogo.png'/></router-link>
             <router-link to='/find'><button class='nav-button-find'><strong>Find Recycling Hubs</strong></button></router-link>
             <router-link to='/learn'><button class='nav-button-learn'><strong>To Recycle or Not?</strong></button></router-link>
             <router-link to='/action'><button class='nav-button-action'><strong>Take Action</strong></button></router-link>

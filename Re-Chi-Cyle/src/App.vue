@@ -2,7 +2,7 @@
   <div id="app">
       <header>
         <div class='nav-bar'>
-            <img class='nav-bar-img' alt='recycling logo with Chicago blue bar and red star' src='./assets/RCClogo.png'/>
+            <router-link to='/'><img class='nav-bar-img' alt='recycling logo with Chicago blue bar and red star' src='./assets/RCClogo.png'/></router-link>
             <router-link to='/find'><button class='nav-button-find'><strong>Find Recycling Hubs</strong></button></router-link>
             <router-link to='/learn'><button class='nav-button-learn'><strong>To Recycle or Not?</strong></button></router-link>
             <router-link to='/action'><button class='nav-button-action'><strong>Take Action</strong></button></router-link>
@@ -55,8 +55,8 @@ main {
 }
 
 .nav-bar-img {
-    width: 10%;
-    height: 10%;
+    width: 35%;
+    height: auto;
 }
 
 .nav-button-find {
@@ -64,9 +64,10 @@ main {
     border-radius: 50px;
     background: #099A09;
     color: #f6f6f6;
-    height: 40px;
+    height: auto;
     width: auto;
-    font-size: 16px;
+    font-size: 1em;
+    margin-right: 100px;
 }
 
 .nav-button-learn {
@@ -74,9 +75,10 @@ main {
     border-radius: 50px;
     background: #F9C846;
     color: #2c3e50;
-    height: 40px;
+    height: auto;
     width: auto;
-    font-size: 16px;
+    font-size: 1em;
+    margin-right: 100px;
 }
 
 .nav-button-action {
@@ -84,9 +86,10 @@ main {
     border-radius: 50px;
     background: #8A0512;
     color: #f6f6f6;
-    height: 40px;
+    height: auto;
     width: auto;
-    font-size: 16px;
+    font-size: 1em;
+    margin-right: 100px;
 }
 
 .footer-bar{
