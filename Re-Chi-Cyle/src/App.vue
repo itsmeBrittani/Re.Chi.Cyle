@@ -14,7 +14,7 @@
     </main>
     <footer>
         <div class='footer-bar'>
-            <a class='footer-link' href="https://github.com/itsmeBrittani">GitHub</a>
+            <a class='footer-link' href="https://github.com/itsmeBrittani/Re.Chi.Cyle">GitHub</a>
             <h5 class='footer-text'>Created by Brittani Savage</h5>
 </div>
     </footer>

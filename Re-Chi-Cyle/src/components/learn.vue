@@ -46,8 +46,10 @@
         </div><br/>
     <div class='plastic-bags-box'>
         <img class='pill-icon' alt='pill bottle' src='../assets/icons8-pill-bottle-100-2.png'/>
-        <img class='plastic-bag-icon' alt='plastic bag' src='../assets/bag.png'/><img class='styrofoam-icon' alt='styrofoam' src='../assets/icons8-plastic-food-container-100.png'/>
-        <br/>Pill Bottles****, Plastic Bags***, and Styrofoam**
+        <img class='plastic-bag-icon' alt='plastic bag' src='../assets/bag.png'/>
+        <img class='styrofoam-icon' alt='styrofoam' src='../assets/icons8-plastic-food-container-100.png'/>
+        <img class='garden-hose-icon' alt='garden hose' src='../assets/icons8-water-hose-100.png'/>
+        <br/>Pill Bottles****, Plastic Bags***, Garden Hoses and Styrofoam**
         </div><br/>
     <div class='electronic-box'>
         <img class='pc-icon' alt='broken computer' src='../assets/icons8-broken-computer-100.png'/>
