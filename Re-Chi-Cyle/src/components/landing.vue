@@ -5,6 +5,7 @@
     <ul>
         <li>Less than 9% of Chicago's waste is recycled - the national average hovers roughly around 32% according to the EPA</li>
         <li>The rate of recycling decreased after Mayor Emanuel introduced the Blue Cart Program and scrapped the Department of the Environment</li>
+        <li>There are only two residential recycling drop-off centers in Chicago and neither are in nor near the South nor West side of the city</li>
         <li>Conflicts of interest with landfill-owning, private recycling haulers have been an ongoing issue contributing to the declining rate </li>
     </ul>
     <h2>Re.Chi.Cyle was made in an effort to:</h2>

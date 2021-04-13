@@ -1,6 +1,11 @@
 <template>
 <div>
   <h1>Make Your Voice Heard</h1>
+  <h3 style='font-size: 16px; line-height: 200%; width: 90%; margin: 0 auto; text-align: center;'>There are still many advancements to make regarding recycling in the city.
+    Chicago still needs to adopt a recycling program or system for both textiles and composting amongst other materials.
+    The city could also look towards reusing plastics to make road repairs last longer.
+    The possibilities are endless and you're invited to explore them here and with other likeminded people in an effort to build towards change.
+  </h3>
   <div class='container'>
     
     <!-- CREATE POST HERE -->
@@ -34,6 +39,8 @@
       <a class='org-list' href='http://chicagopatchworkfarms.com/'><li>Chicago Patchwork Farms</li></a>
       <a class='org-list' href='https://greencorpschicago.org/'><li>Greencorps Chicago</li></a>
       <a class='org-list' href='https://www.chicagoparkdistrict.com/parks-facilities/cooperation-operation-park-573'><li>The Cooperation Operation</li></a>
+      <a class='org-list' href='https://www.theurbancanopy.org/home'><li>The Urban Canopy</li></a>
+      <a class='org-list' href='https://www.blockbins.com/'><li>Block Bins</li></a>
     </ul>
     </div>
   </div>
