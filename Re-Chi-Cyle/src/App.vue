@@ -2,10 +2,11 @@
   <div id="app">
       <header>
         <div class='nav-bar'>
-            <router-link to='/'><img class='nav-bar-img' alt='recycling logo with Chicago blue bar and red star' src='./assets/RCClogo.png'/></router-link>
-            <router-link to='/find'><button class='nav-button-find'><strong>Find Recycling Hubs</strong></button></router-link>
+          <div>
+            <router-link to='/'><img class='nav-bar-img' alt='recycling logo with Chicago blue bar and red star' src='./assets/RCClogo.png'/></router-link></div>
+            <div class='header-buttons'><router-link to='/find'><button class='nav-button-find'><strong>Find Recycling Hubs</strong></button></router-link>
             <router-link to='/learn'><button class='nav-button-learn'><strong>To Recycle or Not?</strong></button></router-link>
-            <router-link to='/action'><button class='nav-button-action'><strong>Take Action</strong></button></router-link>
+            <router-link to='/action'><button class='nav-button-action'><strong>Take Action</strong></button></router-link></div>
 </div>
     </header>
     <main>
@@ -13,8 +14,8 @@
     </main>
     <footer>
         <div class='footer-bar'>
-            <h5 class='footer-text'>Created by Brittani Savage<br/></h5> 
             <a class='footer-link' href="https://github.com/itsmeBrittani">GitHub</a>
+            <h5 class='footer-text'>Created by Brittani Savage</h5>
 </div>
     </footer>
   </div>
@@ -55,8 +56,9 @@ main {
 }
 
 .nav-bar-img {
-    width: 35%;
+    width: 30%;
     height: auto;
+    margin-left: 25px;
 }
 
 .nav-button-find {
@@ -65,20 +67,20 @@ main {
     background: #099A09;
     color: #f6f6f6;
     height: auto;
-    width: auto;
+    width: 100%;
     font-size: 1em;
-    margin-right: 100px;
+    padding: 10px;
 }
 
 .nav-button-learn {
     border: 5px outset #F6BA13;
     border-radius: 50px;
     background: #F9C846;
-    color: #2c3e50;
+    color: black;
     height: auto;
-    width: auto;
+    width: 100%;
     font-size: 1em;
-    margin-right: 100px;
+    padding: 10px;
 }
 
 .nav-button-action {
@@ -87,9 +89,15 @@ main {
     background: #8A0512;
     color: #f6f6f6;
     height: auto;
-    width: auto;
+    width: 100%;
     font-size: 1em;
-    margin-right: 100px;
+    padding: 10px;
+}
+
+.header-buttons{
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer-bar{
@@ -105,12 +113,13 @@ main {
     margin-top: 50px;
 }
 
-a, .footer-text{
-    text-decoration: none;
+.footer-text{
     color: #f6f6f6;
 }
 
 .footer-link{
-    margin-bottom: 10px;
+    text-decoration: none;
+    margin-top: 25px;
+    color: #f6f6f6;
 }
 </style>
