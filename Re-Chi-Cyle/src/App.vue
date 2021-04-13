@@ -13,7 +13,7 @@
     </main>
     <footer>
         <div class='footer-bar'>
-            <p class='footer-text'>Created by Brittani Savage<br/></p> 
+            <h5 class='footer-text'>Created by Brittani Savage<br/></h5> 
             <a class='footer-link' href="https://github.com/itsmeBrittani">GitHub</a>
 </div>
     </footer>
