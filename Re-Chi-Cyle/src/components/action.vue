@@ -124,7 +124,8 @@ input{
     height: 30px;
     width: auto;
     font-size: 16px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .org-list{
