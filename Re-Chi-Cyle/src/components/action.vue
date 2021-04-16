@@ -7,21 +7,53 @@
     The possibilities are endless and you're invited to explore them here and with other likeminded people in an effort to build towards change.
   </h3>
   <div class='container'>
-    
     <!-- CREATE POST HERE -->
-    <p class='error' v-if='error'>{{ error }}</p>
     <div class='events-container'>
       <h2 class='recy-title'> Recycling Events </h2>
-      <div class='event'>Coming Soon</div>
-      <div class='event-maybe' v-for='(event, index) in events' v-bind:item='event' v-bind:index='index' v-bind:key='event._id'>
-        {{`${event.createdAt.getDate()}/${event.createdAt.getMonth()}/${event.createdAt.getFullYear()}`}}
-        <p class='event-title'>{{ event.title }}</p>
-        <p class='location'>{{ event.location }}</p>
-        <p class='date'>{{ event.date }}</p>
-        <p class='startTime'>{{ event.startTime }}</p>
-        <p class='endTime'>{{ event.endTime }}</p>
-        <p class='description'>{{ event.description }}</p>
-      </div> 
+      <div class='event-form'>
+        <form id="event-form">
+      <!-- title -->
+      <div class="field">
+        <label class="label">Title: </label>
+        <input type="text" class="input" name="title">
+      </div>
+
+      <!-- location -->
+      <div class="field">
+        <label class="label">Location: </label>
+        <input type="text" class="input" name="location">
+      </div>
+
+      <!-- date -->
+      <div class="field">
+        <label class="label">Date: </label>
+        <input type="date" class="input" name="date">
+      </div>
+
+      <!-- startTime -->
+      <div class="field">
+        <label class="label">Start Time: </label>
+        <input type="text" class="input" name="startTime">
+      </div>
+
+      <!-- endTime -->
+      <div class="field">
+        <label class="label">End Time: </label>
+        <input type="text" class="input" name="endTime">
+      </div>
+
+      <!-- description -->
+      <div class="field">
+        <label class="label">Description: </label>
+        <input type="textarea" class="input" name="description">
+      </div>
+
+      <!-- submit button -->
+      <div class="field has-text-right">
+        <button type="submit" class="event-submit"><strong>Submit</strong></button>
+      </div>
+    </form>
+</div>
   </div>
   <div class='contact-connect-container'> 
     <h2>Contact your Alderperson</h2>
@@ -46,7 +78,9 @@
   </div>
   </div>
 </template>
+<script>
 
+</script>
 
 <style>
 .container{
@@ -55,16 +89,34 @@
   justify-content: space-around;
 }
 .events-container{
+  display: flex;
+  flex-direction: column;
   width: 60%;
   height: auto;
   background: lightgray;
+}
+
+#event-form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+label{
+  font-weight: bold;
+}
+
+input{
+  margin: 5px;
 }
 
 .contact-connect-container{
   width: 30%;
 }
 
-.find-my-button{
+.find-my-button, .event-submit{
   border: 5px outset #060F88;
     border-radius: 50px;
     background: #0713B0;

@@ -4,6 +4,7 @@ import Landing from '@/components/landing'
 import Find from '@/components/find'
 import Learn from '@/components/learn'
 import Action from '@/components/action'
+import Add from '@/components/add'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/action',
       name: 'action',
       component: Action
+    },
+    {
+      path: '/add',
+      name: 'add',
+      component: Add
     }
   ]
 })
