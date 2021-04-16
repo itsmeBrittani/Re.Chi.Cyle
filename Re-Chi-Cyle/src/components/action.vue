@@ -27,7 +27,7 @@
       <!-- date -->
       <div class="field">
         <label class="label">Date: </label>
-        <input type="date" class="input" name="date">
+        <input type="text" class="input" name="date">
       </div>
 
       <!-- startTime -->
