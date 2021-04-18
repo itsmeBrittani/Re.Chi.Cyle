@@ -15,37 +15,37 @@
       <!-- title -->
       <div class="field">
         <label class="label">Title: </label>
-        <input type="text" class="input" name="title">
+        <input type="text" class="input" name="title" placeholder='title of Event'>
       </div>
 
       <!-- location -->
       <div class="field">
         <label class="label">Location: </label>
-        <input type="text" class="input" name="location">
+        <input type="text" class="input" name="location" placeholder="location of event">
       </div>
 
       <!-- date -->
       <div class="field">
         <label class="label">Date: </label>
-        <input type="text" class="input" name="date">
+        <input type="text" class="input" name="date" placeholder="MM/DD/YYYY">
       </div>
 
       <!-- startTime -->
       <div class="field">
         <label class="label">Start Time: </label>
-        <input type="text" class="input" name="startTime">
+        <input type="text" class="input" name="startTime" placeholder="00:00 AM/PM">
       </div>
 
       <!-- endTime -->
       <div class="field">
         <label class="label">End Time: </label>
-        <input type="text" class="input" name="endTime">
+        <input type="text" class="input" name="endTime" placeholder="00:00 AM/PM">
       </div>
 
       <!-- description -->
       <div class="field">
         <label class="label">Description: </label>
-        <input type="textarea" class="input" name="description">
+        <textarea class="input" name="description" rows="4" cols="33" placeholder="Description of event"/>
       </div>
 
       <!-- submit button -->
@@ -54,7 +54,7 @@
       </div>
     </form>
     <div class='event-data-container'>
-      <h1>Hello {{ event }}</h1>
+      <h1>Hello {{event}}</h1>
       </div>
 </div>
   </div>
@@ -103,6 +103,8 @@ export default {
   width: 60%;
   height: auto;
   background: lightgray;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 #event-form{
@@ -115,14 +117,16 @@ export default {
 
 label{
   font-weight: bold;
+  float: left;
 }
 
-input{
+input, textarea{
   margin: 5px;
 }
 
 .contact-connect-container{
   width: 30%;
+  margin: 0 auto;
 }
 
 .find-my-button, .event-submit{
