@@ -53,6 +53,9 @@
         <button type="submit" class="event-submit"><strong>Submit</strong></button>
       </div>
     </form>
+    <div class='event-data-container'>
+      <h1>Hello {{ event }}</h1>
+      </div>
 </div>
   </div>
   <div class='contact-connect-container'> 
@@ -79,7 +82,13 @@
   </div>
 </template>
 <script>
-
+export default {
+  data () {
+    return {
+      event: 'events'
+    }
+  }
+}
 </script>
 
 <style>

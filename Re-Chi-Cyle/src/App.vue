@@ -23,7 +23,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      event: 'events'
+    }
+  }
 }
 </script>
 

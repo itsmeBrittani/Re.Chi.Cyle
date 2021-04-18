@@ -5,6 +5,8 @@ import Find from '@/components/find'
 import Learn from '@/components/learn'
 import Action from '@/components/action'
 import Add from '@/components/add'
+import List from '@/components/list'
+import Edit from '@/components/edit'
 
 Vue.use(Router)
 
@@ -34,6 +36,16 @@ export default new Router({
       path: '/add',
       name: 'add',
       component: Add
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: List
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: Edit
     }
   ]
 })
