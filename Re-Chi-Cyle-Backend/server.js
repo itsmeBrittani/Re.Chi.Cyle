@@ -14,7 +14,7 @@ const eventController = require('./controllers/RCC.js');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.use('/action/events', eventController);
+app.use('/action', eventController);
 app.use(express.static('public'));
 const corsOptions = {
     origin: "http: localhost: 8081"

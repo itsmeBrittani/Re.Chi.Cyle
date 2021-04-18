@@ -1,8 +1,10 @@
-import axios from "axios";
+import axios from 'axios'
 
-export default axios.create({
-  baseURL: "http://localhost:8081",
-  headers: {
-    "Content-type": "application/json"
-  }
-});
+export default () => {
+  axios.create({
+    baseURL: 'http://localhost:5000/action',
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+}

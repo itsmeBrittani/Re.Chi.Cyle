@@ -45,16 +45,25 @@
       <!-- description -->
       <div class="field">
         <label class="label">Description: </label>
-        <textarea class="input" name="description" rows="4" cols="33" placeholder="Description of event"/>
+        <textarea class="input" name="description" rows="4" cols="33" placeholder="description of event"/>
       </div>
-
       <!-- submit button -->
       <div class="field has-text-right">
         <button type="submit" class="event-submit"><strong>Submit</strong></button>
       </div>
     </form>
     <div class='event-data-container'>
-      <h1>Hello {{event}}</h1>
+      <h1>Events</h1>
+      <div v-for="(title, location, date, startTime, endTime, description) in events">
+      <p>
+        <span><b>{{ event.title }}</b></span><br />
+        <span>{{ event.location }}</span>
+        <span><b>{{ event.date}}</b></span><br />
+        <span>{{ event.startTime }}</span>
+        <span><b>{{ event.endTime }}</b></span><br />
+        <span>{{ event.description }}</span>
+      </p>
+    </div>
       </div>
 </div>
   </div>
@@ -82,10 +91,20 @@
   </div>
 </template>
 <script>
+import EventService from '@/EventService'
 export default {
   data () {
     return {
-      event: 'events'
+      events: []
+    }
+  },
+  mounted () {
+    this.getEvents()
+  },
+  methods: {
+    async getEvents () {
+      const response = await EventService.fetchEvents()
+      this.events = response.data
     }
   }
 }
