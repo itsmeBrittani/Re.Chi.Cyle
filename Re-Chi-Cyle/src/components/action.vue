@@ -53,21 +53,19 @@
       </div>
     </form>
     <div class='event-data-container'>
-      <h1>Events</h1>
+      <h2><b>Events</b></h2>
       <section v-if="errored">
-    <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+    <p>We're sorry, we're not able to retrieve the event list at the moment, please try back later</p>
   </section>
 
       <div class='event-list' v-for="event in events" :key='event.id'>
 
-      <p>
-        <span><b>{{ event.title }}</b></span><br />
-        <span>{{ event.location }}</span>
-        <span><b>{{ event.date}}</b></span><br />
-        <span>{{ event.startTime }}</span>
-        <span><b>{{ event.endTime }}</b></span><br />
-        <span>{{ event.description }}</span>
-      </p>
+        <h3 class='event-title'><b>{{ event.title }}</b></h3>
+        <h4>{{ event.location }}</h4>
+        <h4>{{ event.date}}</h4>
+        <b><span>{{ event.startTime }}</span> to
+        <span>{{ event.endTime }}</span></b><br />
+        <p class='event-desc'>{{ event.description }}</p>
     </div>
       </div>
 </div>
@@ -96,7 +94,6 @@
   </div>
 </template>
 <script>
-// import EventService from '@/EventService'
 import axios from 'axios'
 
 export default {
@@ -134,6 +131,7 @@ export default {
   background: lightgray;
   padding: 10px;
   margin: 0 auto;
+  border-radius: 3px;
 }
 
 #event-form{
@@ -180,6 +178,22 @@ ul{
   text-align: center;
   margin-right: 40px;
   line-height: 200%;
+}
+
+.event-list{
+  background: #e8daf7;
+  border-radius: 3px;
+}
+
+.event-desc{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-bottom: 8px;
+}
+
+.event-title{
+  padding-top: 8px;
 }
 
 </style>
