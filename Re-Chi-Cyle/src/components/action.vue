@@ -92,7 +92,7 @@
 </template>
 <script>
 // import EventService from '@/EventService'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   data () {
@@ -101,17 +101,11 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:5000/action')
-      .then((res => {
-        return res.json()
+    axios
+      .get('http://localhost:5000/action')
+      .then(res => {
+        this.data = res.data
       })
-        .then((users) => {
-          this.events.push(...users)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-      )
   }
 }
 </script>
