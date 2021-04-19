@@ -54,7 +54,12 @@
     </form>
     <div class='event-data-container'>
       <h1>Events</h1>
+      <section v-if="errored">
+    <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+  </section>
+
       <div class='event-list' v-for="event in events" :key='event.id'>
+
       <p>
         <span><b>{{ event.title }}</b></span><br />
         <span>{{ event.location }}</span>
@@ -97,14 +102,19 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      events: []
+      events: [],
+      errored: false
     }
   },
   mounted () {
     axios
       .get('http://localhost:5000/action')
       .then(res => {
-        this.data = res.data
+        this.events = res.data
+      })
+      .catch(err => {
+        console.log(err)
+        this.errored = true
       })
   }
 }
