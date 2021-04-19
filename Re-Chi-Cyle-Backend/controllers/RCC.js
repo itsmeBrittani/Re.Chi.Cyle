@@ -42,17 +42,15 @@ EVENTS.get('/seed', async (req, res) => {
     }
 });
 
-EVENTS.all('/', function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
-})
 
 //index
-EVENTS.route('/').get((req, res) => {
+EVENTS.route('/events').get((req, res) => {
     Event.find((err, foundEvents) => {
     if (err) {
         return next(error)
     } else {
     res.json(foundEvents);
+    res.send(foundEvents);
     };
 });
 
