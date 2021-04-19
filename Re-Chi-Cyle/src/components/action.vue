@@ -54,7 +54,7 @@
     </form>
     <div class='event-data-container'>
       <h1>Events</h1>
-      <div v-for="(title, location, date, startTime, endTime, description) in events">
+      <div class='event-list' v-for="event in events" :key='event.id'>
       <p>
         <span><b>{{ event.title }}</b></span><br />
         <span>{{ event.location }}</span>
@@ -91,7 +91,9 @@
   </div>
 </template>
 <script>
-import EventService from '@/EventService'
+// import EventService from '@/EventService'
+// import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -99,13 +101,17 @@ export default {
     }
   },
   mounted () {
-    this.getEvents()
-  },
-  methods: {
-    async getEvents () {
-      const response = await EventService.fetchEvents()
-      this.events = response.data
-    }
+    fetch('http://localhost:5000/action')
+      .then((res => {
+        return res.json()
+      })
+        .then((users) => {
+          this.events.push(...users)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      )
   }
 }
 </script>

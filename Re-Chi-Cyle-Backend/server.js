@@ -16,13 +16,12 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 app.use('/action', eventController);
 app.use(express.static('public'));
+
 const corsOptions = {
-    origin: "http: localhost: 8081"
+    origin: "http://localhost:8080"
 };
 
 app.use(cors(corsOptions));
-
-
 
 const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost:27017/${dbName}`;
 

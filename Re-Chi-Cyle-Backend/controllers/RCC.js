@@ -44,53 +44,58 @@ EVENTS.get('/seed', async (req, res) => {
 
 
 //index
-EVENTS.get('/', (req, res) => {
-    Event.find({}, (err, foundEvents) => {
+EVENTS.route('/action').get((req, res) => {
+    Event.find((err, foundEvents) => {
     if (err) {
-        res.status(400).json({ error: err.message});
-    }
-    res.status(200).json(foundEvents);
-    });
+        return next(error)
+    } else {
+    res.json(foundEvents);
+    };
 });
 
 //create
-EVENTS.post('/', (req, res)=>{
-    Event.create(req.body, (err, createdEvent)=>{
+EVENTS.post('/create-action').post((req, res, next) => {
+    Event.create(req.body, (err, createdEvent) => {
         if (err) {
-            res.status(400).json({ error: err.message});
-        }
-        res.status(200).json(createdEvent);
+            return next(error)
+        } else {
+        res.json(createdEvent);
         res.redirect('/action');
-    });
+    };
+});
 });
 
 //update
-EVENTS.put('/:id', (req, res) => {
+EVENTS.put('/action/:id').post((req, res, next) => {
     Event.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedEvent) => {
         if (err) {
-            res.status(400).json({ error: err.message});
-        }
-        res.status(200).json(updatedEvent);
-    });
+            return next(err);
+        } else {
+        res.json(updatedEvent);
+    };
+});
 });
 
-//show
-EVENTS.get('/:id', (req, res) => {
-    Event.findById(req.params.id, (err, foundEvent) => {if (err) {
-        res.status(400).json({ error: err.message});
-    }
-    res.status(200).json(foundEvent);
-});
-})
+// //show
+// EVENTS.get('/action/event/:id', (req, res) => {
+//     Event.findById(req.params.id, (err, foundEvent) => {if (err) {
+//         res.status(400).json({ error: err.message});
+//     }
+//     res.status(200).json(foundEvent);
+// });
+// })
 
 //destroy
-EVENTS.delete('/:id', (req, res) => {
+EVENTS.delete('/action/:id').delete((req, res, next) => {
     Event.findByIdAndRemove(req.params.id, (err, deletedEvent) => {
         if (err) {
-            res.status(400).json({ error: err.message});
-        }
-        res.status(200).json(deletedEvent);
-    });
+            return next(err)
+        } else {
+        res.json(deletedEvent);
+        res.direct('/action')
+    };
+});
+});
 });
 
 module.exports = EVENTS;
