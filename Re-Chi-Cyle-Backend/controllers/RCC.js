@@ -44,7 +44,7 @@ EVENTS.get('/seed', async (req, res) => {
 
 
 //index
-EVENTS.route('/action').get((req, res) => {
+EVENTS.route('/').get((req, res) => {
     Event.find((err, foundEvents) => {
     if (err) {
         return next(error)
@@ -54,7 +54,7 @@ EVENTS.route('/action').get((req, res) => {
 });
 
 //create
-EVENTS.post('/create-action').post((req, res, next) => {
+EVENTS.post('/create').post((req, res, next) => {
     Event.create(req.body, (err, createdEvent) => {
         if (err) {
             return next(error)
@@ -66,7 +66,7 @@ EVENTS.post('/create-action').post((req, res, next) => {
 });
 
 //update
-EVENTS.put('/action/:id').post((req, res, next) => {
+EVENTS.put('/:id').post((req, res, next) => {
     Event.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedEvent) => {
         if (err) {
             return next(err);
@@ -86,7 +86,7 @@ EVENTS.put('/action/:id').post((req, res, next) => {
 // })
 
 //destroy
-EVENTS.delete('/action/:id').delete((req, res, next) => {
+EVENTS.delete('/:id').delete((req, res, next) => {
     Event.findByIdAndRemove(req.params.id, (err, deletedEvent) => {
         if (err) {
             return next(err)
