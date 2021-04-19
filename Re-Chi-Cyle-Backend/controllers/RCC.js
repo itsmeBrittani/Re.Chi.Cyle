@@ -42,61 +42,49 @@ EVENTS.get('/seed', async (req, res) => {
     }
 });
 
+EVENTS.get('/', async (req, res) => {
+    try {
+        const events = await Event.find()
+        if (!events) throw new Error('No events')
+        res.status(200).json(events) 
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 
-//index
-EVENTS.route('/events').get((req, res) => {
-    Event.find((err, foundEvents) => {
-    if (err) {
-        return next(error)
-    } else {
-    res.json(foundEvents);
-    res.send(foundEvents);
-    };
-});
+EVENTS.post('/', async (req, res) => {
+    const newEvent = new Event(req.body)
+    try {
+        const event = await newEvent.save()
+        if (!event) throw new Error('Something went wrong saving the event')
+        res.status(200).json(event)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 
-//create
-EVENTS.post('/create').post((req, res, next) => {
-    Event.create(req.body, (err, createdEvent) => {
-        if (err) {
-            return next(error)
-        } else {
-        res.json(createdEvent);
-        res.redirect('/action');
-    };
-});
-});
+EVENTS.put('/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const response = await Event.findByIdAndUpdate(id, req.body)
+        if (!response) throw Error('Something went wrong ')
+        const updated = { ...response._doc, ...req.body }
+        res.status(200).json(updated)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 
-//update
-EVENTS.put('/:id').post((req, res, next) => {
-    Event.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedEvent) => {
-        if (err) {
-            return next(err);
-        } else {
-        res.json(updatedEvent);
-    };
-});
-});
+EVENTS.delete('/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const removed = await Event.findByIdAndDelete(id)
+        if (!removed) throw Error('Something went wrong ')
+        res.status(200).json(removed)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 
-// //show
-// EVENTS.get('/action/event/:id', (req, res) => {
-//     Event.findById(req.params.id, (err, foundEvent) => {if (err) {
-//         res.status(400).json({ error: err.message});
-//     }
-//     res.status(200).json(foundEvent);
-// });
-// })
-
-//destroy
-EVENTS.delete('/:id').delete((req, res, next) => {
-    Event.findByIdAndRemove(req.params.id, (err, deletedEvent) => {
-        if (err) {
-            return next(err)
-        } else {
-        res.json(deletedEvent);
-        res.direct('/action')
-    };
-});
-});
-});
 
 module.exports = EVENTS;
