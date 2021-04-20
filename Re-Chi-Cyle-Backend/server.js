@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-    app.usrse(express.static('Re-Chi-Cyle/dist'))
+    app.use(express.static('Re-Chi-Cyle/dist'))
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'Re-Chi-Cyle', 'dist', 'index.html'))
     })

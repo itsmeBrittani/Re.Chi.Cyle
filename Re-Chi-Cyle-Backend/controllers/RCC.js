@@ -2,6 +2,7 @@ const express = require('express');
 const EVENTS = express.Router();
 const Event = require('../models/event.js');
 const moment = require('moment');
+const mongoose = require('mongoose');
 
 
 //Routes
@@ -52,39 +53,65 @@ EVENTS.get('/', async (req, res) => {
     }
 })
 
-EVENTS.post('/', async (req, res) => {
-    const newEvent = new Event(req.body)
-    try {
-        const event = await newEvent.save()
-        if (!event) throw new Error('Something went wrong saving the event')
-        res.status(200).json(event)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-})
+EVENTS.post('/', async (req, res, next) => {
+    // const event = new Event({
+    //     title: req.body.title,
+    //     location: req.body.location,
+    //     date: req.body.date,
+    //     startTime: req.body.startTime,
+    //     endTime: req.body.endTime,
+    //     description: req.body.description
+    await Event.create(req.body, (err, data) => {
+        if (err) {
+            return next(err)
+        } else {
+            res.json(data)
+        }
+    })
+    });
+//     try {
+//         const newEvent = await event.save();
+//         res.status(200).json(newEvent);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message })
+//     }
+// })
 
-EVENTS.put('/:id', async (req, res) => {
-    const { id } = req.params
-    try {
-        const response = await Event.findByIdAndUpdate(id, req.body)
-        if (!response) throw Error('Something went wrong ')
-        const updated = { ...response._doc, ...req.body }
-        res.status(200).json(updated)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-})
+EVENTS.put('/:id', async (req, res, next) => {
+    await Event.findByIdAndUpdate(req.params.id, {
+        $set: req.body
+    }, (err, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.json(data)
+            console.log('Event updated!!')
+        }
+    })
+    });
+//         if (!response) throw Error('Something went wrong ')
+//         const updated = { ...response._doc, ...req.body }
+//         res.status(200).json(updated)
+//     } catch (error) {
+//         res.status(500).json({ message: error.message })
+//     }
+// })
 
-EVENTS.delete('/:id', async (req, res) => {
-    const { id } = req.params
-    try {
-        const removed = await Event.findByIdAndDelete(id)
-        if (!removed) throw Error('Something went wrong ')
-        res.status(200).json(removed)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-})
+EVENTS.delete('/:id', async (req, res, next) => {
+    await Event.findByIdAndDelete(req.params.id, (err, data) => {
+        if (err) {
+            return next(err);
+        } else {
+            res.status(200).json({msg: data})
+        }
+    })
+});
+//         if (!removed) throw Error('Something went wrong ')
+//         res.status(200).json(removed)
+//     } catch (error) {
+//         res.status(500).json({ message: error.message })
+//     }
+// })
 
 
 module.exports = EVENTS;
