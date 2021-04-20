@@ -7,49 +7,48 @@
     The possibilities are endless and you're invited to explore them here and with other likeminded people in an effort to build towards change.
   </h3>
   <div class='container'>
-    <!-- CREATE POST HERE -->
     <div class='events-container'>
       <h2 class='recy-title'> Recycling Events </h2>
       <div class='event-form'>
-        <form id="event-form">
+        <form id="event-form" @submit.prevent="handleSubmitForm" method="POST">
       <!-- title -->
       <div class="field">
         <label class="label">Title: </label>
-        <input type="text" class="input" name="title" placeholder='title of Event'>
+        <input type="text" class="input" v-model="title" name="title" placeholder='title of Event'>
       </div>
 
       <!-- location -->
       <div class="field">
         <label class="label">Location: </label>
-        <input type="text" class="input" name="location" placeholder="location of event">
+        <input type="text" class="input" v-model="location" name="location" placeholder="location of event">
       </div>
 
       <!-- date -->
       <div class="field">
         <label class="label">Date: </label>
-        <input type="text" class="input" name="date" placeholder="MM/DD/YYYY">
+        <input type="text" class="input" v-model="date" name="date" placeholder="MM/DD/YYYY">
       </div>
 
       <!-- startTime -->
       <div class="field">
         <label class="label">Start Time: </label>
-        <input type="text" class="input" name="startTime" placeholder="00:00 AM/PM">
+        <input type="text" class="input" v-model='startTime' name="startTime" placeholder="00:00 AM/PM">
       </div>
 
       <!-- endTime -->
       <div class="field">
         <label class="label">End Time: </label>
-        <input type="text" class="input" name="endTime" placeholder="00:00 AM/PM">
+        <input type="text" class="input" v-model='endTime' name="endTime" placeholder="00:00 AM/PM">
       </div>
 
       <!-- description -->
       <div class="field">
         <label class="label">Description: </label>
-        <textarea class="input" name="description" rows="4" cols="33" placeholder="description of event"/>
+        <textarea class="input" v-model='description' name="description" rows="4" cols="33" placeholder="description of event"/>
       </div>
       <!-- submit button -->
       <div class="field has-text-right">
-        <button type="submit" class="event-submit"><strong>Submit</strong></button>
+        <button type="submit" class="event-submit" ><strong>Submit</strong></button>
       </div>
     </form>
     <div class='event-data-container'>
@@ -58,7 +57,7 @@
     <p>We're sorry, we're not able to retrieve the event list at the moment, please try back later</p>
   </section>
 
-      <div class='event-list' v-for="event in events" :key='event.id'>
+      <div class='event-list' v-for="event in events" v-bind:key='event.id'>
 
         <h3 class='event-title'><b>{{ event.title }}</b></h3>
         <h4>{{ event.location }}</h4>
@@ -100,6 +99,12 @@ export default {
   data () {
     return {
       events: [],
+      title: '',
+      location: '',
+      date: '',
+      startTime: '',
+      endTime: '',
+      description: '',
       errored: false
     }
   },
@@ -113,6 +118,24 @@ export default {
         console.log(err)
         this.errored = true
       })
+  },
+  methods: {
+    handleSubmitForm () {
+      // let apiURL = 'http://localhost:5000/action/'
+      // axios.post(apiURL, this.event).then(() => {
+      //   this.$router.push('/')
+      //   this.event = {}
+      // }).catch(err => {
+      //   console.log(err)
+      // })
+      console.log({title: this.title, location: this.location, date: this.date, startTime: this.startTime, endTime: this.endTime, description: this.description})
+      this.title = ''
+      this.location = ''
+      this.date = ''
+      this.startTime = ''
+      this.endTime = ''
+      this.description = ''
+    }
   }
 }
 </script>
