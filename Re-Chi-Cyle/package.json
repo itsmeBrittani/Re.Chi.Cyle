@@ -1,6 +1,9 @@
 {
   "name": "re-chi-cyle",
   "version": "1.0.0",
+  "engines": {
+    "node": "15.11.0"
+  },
   "description": "",
   "author": "Brittani Savage <brittanisavage@gmail.com>",
   "private": true,
@@ -19,6 +22,7 @@
     "mongoose": "^5.12.3",
     "node-fetch": "^2.6.1",
     "vue": "^2.5.2",
+    "vue-axios": "^3.2.4",
     "vue-form-generator": "^2.3.4",
     "vue-router": "^3.0.1",
     "vue-tel-input": "^5.2.0",
