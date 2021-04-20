@@ -10,7 +10,7 @@
     <div class='events-container'>
       <h2 class='recy-title'> Recycling Events </h2>
       <div class='event-form'>
-        <form id="event-form" @submit.prevent="handleSubmitForm" method="POST">
+        <form id="event-form" @submit.prevent="handleSubmitForm">
       <!-- title -->
       <div class="field">
         <label class="label">Title: </label>
@@ -121,13 +121,14 @@ export default {
   },
   methods: {
     handleSubmitForm () {
-      // let apiURL = 'http://localhost:5000/action/'
-      // axios.post(apiURL, this.event).then(() => {
-      //   this.$router.push('/')
-      //   this.event = {}
-      // }).catch(err => {
-      //   console.log(err)
-      // })
+      let newEvent = {
+        title: this.title,
+        location: this.location,
+        date: this.date,
+        startTime: this.startTime,
+        endTime: this.endTime,
+        description: this.description
+      }
       console.log({title: this.title, location: this.location, date: this.date, startTime: this.startTime, endTime: this.endTime, description: this.description})
       this.title = ''
       this.location = ''
@@ -135,6 +136,7 @@ export default {
       this.startTime = ''
       this.endTime = ''
       this.description = ''
+      this.events.push(newEvent)
     }
   }
 }
