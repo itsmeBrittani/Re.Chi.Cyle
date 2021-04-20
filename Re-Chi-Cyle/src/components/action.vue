@@ -10,41 +10,41 @@
     <div class='events-container'>
       <h2 class='recy-title'> Recycling Events </h2>
       <div class='event-form'>
-        <form id="event-form" @submit.prevent="handleSubmitForm">
+        <form id="event-form" @submit.prevent="handleSubmitForm" method='POST'>
       <!-- title -->
       <div class="field">
         <label class="label">Title: </label>
-        <input type="text" class="input" v-model="title" name="title" placeholder='title of Event'>
+        <input required type="text" class="input" v-model.lazy.trim="title" name="title" placeholder='title of event'>
       </div>
 
       <!-- location -->
       <div class="field">
         <label class="label">Location: </label>
-        <input type="text" class="input" v-model="location" name="location" placeholder="location of event">
+        <input type="text" class="input" v-model.lazy.trim="location" name="location" placeholder="location of event">
       </div>
 
       <!-- date -->
       <div class="field">
         <label class="label">Date: </label>
-        <input type="text" class="input" v-model="date" name="date" placeholder="MM/DD/YYYY">
+        <input type="text" class="input" v-model.lazy.trim="date" name="date" placeholder="MM/DD/YYYY">
       </div>
 
       <!-- startTime -->
       <div class="field">
         <label class="label">Start Time: </label>
-        <input type="text" class="input" v-model='startTime' name="startTime" placeholder="00:00 AM/PM">
+        <input type="text" class="input" v-model.lazy.trim='startTime' name="startTime" placeholder="00:00 AM/PM">
       </div>
 
       <!-- endTime -->
       <div class="field">
         <label class="label">End Time: </label>
-        <input type="text" class="input" v-model='endTime' name="endTime" placeholder="00:00 AM/PM">
+        <input type="text" class="input" v-model.lazy.trim='endTime' name="endTime" placeholder="00:00 AM/PM">
       </div>
 
       <!-- description -->
       <div class="field">
         <label class="label">Description: </label>
-        <textarea class="input" v-model='description' name="description" rows="4" cols="33" placeholder="description of event"/>
+        <textarea class="input" v-model.lazy.trim='description' name="description" rows="4" cols="33" placeholder="description of event"/>
       </div>
       <!-- submit button -->
       <div class="field has-text-right">
@@ -59,7 +59,11 @@
 
       <div class='event-list' v-for="event in events" v-bind:key='event.id'>
 
-        <h3 class='event-title'><b>{{ event.title }}</b></h3>
+        <h3 class='event-title'><b>{{ event.title }}</b>
+          <form @click.prevent='onDelete(id)' method="POST">
+            <img src='../assets/delete.png' class="delete-icon" alt='trash can'/>
+          </form>
+        </h3>
         <h4>{{ event.location }}</h4>
         <h4>{{ event.date}}</h4>
         <b><span>{{ event.startTime }}</span> to
@@ -93,8 +97,12 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 import axios from 'axios'
+import vueAxios from 'vue-axios'
+// import EventService from '../../EventService'
 
+Vue.use(vueAxios, axios)
 export default {
   data () {
     return {
@@ -107,6 +115,13 @@ export default {
       description: '',
       errored: false
     }
+  },
+  created () {
+    axios.get('http://localhost:5000/action').then(res => {
+      this.events = res.data
+    }).catch(err => {
+      console.log(err)
+    })
   },
   mounted () {
     axios
@@ -121,22 +136,47 @@ export default {
   },
   methods: {
     handleSubmitForm () {
-      let newEvent = {
-        title: this.title,
-        location: this.location,
-        date: this.date,
-        startTime: this.startTime,
-        endTime: this.endTime,
-        description: this.description
+      // const newEvent = {
+      //   title: this.title,
+      //   location: this.location,
+      //   date: this.date,
+      //   startTime: this.startTime,
+      //   endTime: this.endTime,
+      //   description: this.description
+      // }
+      axios.post('http://localhost:5000/action/', this.event).then(() => {
+        this.events.push(this.event)
+        this.event = {
+          title: '',
+          location: '',
+          date: '',
+          startTime: '',
+          endTime: '',
+          description: ''
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+      // console.log({title: this.title, location: this.location, date: this.date, startTime: this.startTime, endTime: this.endTime, description: this.description})
+      // this.title = ''
+      // this.location = ''
+      // this.date = ''
+      // this.startTime = ''
+      // this.endTime = ''
+      // this.description = ''
+      // console.log(newEvent)
+      // this.events.push(newEvent)
+    },
+    onDelete (id) {
+      let url = `http://localhost:5000/action/${id}`
+      let indexOfArrayItem = this.events.findIndex(i => i._id === id)
+      if (window.confirm('Do you really want to delete?')) {
+        axios.delete(url).then(() => {
+          this.events.splice(indexOfArrayItem, 1)
+        }).catch(error => {
+          console.log(error)
+        })
       }
-      console.log({title: this.title, location: this.location, date: this.date, startTime: this.startTime, endTime: this.endTime, description: this.description})
-      this.title = ''
-      this.location = ''
-      this.date = ''
-      this.startTime = ''
-      this.endTime = ''
-      this.description = ''
-      this.events.push(newEvent)
     }
   }
 }
@@ -219,6 +259,12 @@ ul{
 
 .event-title{
   padding-top: 8px;
+}
+
+.delete-icon{
+  width: 17px;
+  height: auto;
+  margin-left: 7px;
 }
 
 </style>
